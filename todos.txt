@@ -1,7 +1,2 @@
 Clean
 Play
-prepare
-shower
-clear room
-do the dishes
-visit Bruno
