@@ -1,4 +1,11 @@
-from functions import get_todos, write_todos
+# from functions import get_todos, write_todos
+import functions
+import time
+
+
+now = time.strftime("%b %d, %Y %H:%M:%S")
+
+print(f"It is {now}")
 
 while True:
     # Get user input and strip space chars from it
@@ -8,14 +15,14 @@ while True:
     if user_action.startswith("add"):
         todo =  user_action[4:]
 
-        todos = get_todos()
+        todos = functions.get_todos()
 
         todos.append(todo + "\n")
 
-        write_todos(todos)
+        functions.write_todos(todos)
 
     elif user_action.startswith("show"):
-        todos = get_todos()
+        todos = functions.get_todos()
 
         # list comprehension
         # new_todos = [item.strip("\n") for item in todos]
@@ -31,12 +38,12 @@ while True:
 
             number = number - 1
 
-            todos = get_todos()
+            todos = functions.get_todos()
 
             new_todo = input("Enter new todo: ")
             todos[number] = new_todo + "\n"
 
-            write_todos(todos)
+            functions.write_todos(todos)
         except ValueError:
             print("Your command is not valid.")
             continue
@@ -45,7 +52,7 @@ while True:
         try:
             number = int(user_action[9:])
 
-            todos = get_todos()
+            todos = functions.get_todos()
 
             index = number - 1
 
@@ -53,7 +60,7 @@ while True:
 
             todos.pop(index)
 
-            write_todos(todos)
+            functions.write_todos(todos)
 
             message = f"Todo '{todo_to_remove}' was removed from the list."
             print(message)
